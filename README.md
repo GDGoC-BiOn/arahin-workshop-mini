@@ -41,36 +41,23 @@ Buka `docs/tasks/<nama-tugas>.md`, lalu buka `lib/main.dart` dan cari komentar
 
 ### 4. Siapkan API backend
 
-Untuk workshop, gunakan backend lokal agar tidak membuat akun latihan di
-production. Di terminal terpisah, clone dan jalankan backend:
+Gunakan API workshop yang sudah disediakan; peserta tidak perlu menjalankan
+backend sendiri. Set base URL ini pada API client yang kamu buat:
 
 ```sh
-# Mulai dari folder arahin-workshop-mini; backend diletakkan sebagai sibling.
-cd ..
-git clone https://github.com/GDGoC-BiOn/arahin-backend.git
-cd arahin-backend
-cp .env.example .env
-make db
-make migrate
-make run
-```
-
-Perintah ini membutuhkan Docker untuk PostgreSQL. Baca juga
-[panduan setup backend](https://github.com/GDGoC-BiOn/arahin-backend#Getting-started).
-Pastikan `GET http://localhost:8080/healthz` berhasil sebelum menguji form.
-
-Set base URL pada API client yang kamu buat. Gunakan `http://localhost:8080`
-untuk Flutter Web/iOS Simulator; untuk Android Emulator gunakan
-`http://10.0.2.2:8080`. Perangkat fisik harus memakai alamat IP LAN komputer
-yang menjalankan backend. Contoh menjalankan app di Android Emulator:
-
-```sh
-flutter run --dart-define=API_BASE_URL=http://10.0.2.2:8080
+flutter run --dart-define=API_BASE_URL=https://arahin-244244141714.asia-southeast1.run.app/api
 ```
 
 Tambahkan dependency HTTP yang kamu pilih (contoh: `flutter pub add http`), lalu
 gunakan `API_BASE_URL` tersebut sebagai base URL client. Kirim JSON dengan
 `Content-Type: application/json`; jangan hardcode token atau mencetaknya ke log.
+Contohnya, route login lengkap menjadi
+`https://arahin-244244141714.asia-southeast1.run.app/api/v1/auth/login`.
+
+Kalau fasilitator meminta menjalankan backend lokal, ikuti
+[panduan setup backend](https://github.com/GDGoC-BiOn/arahin-backend#Getting-started).
+Base URL lokalnya `http://localhost:8080`; Android Emulator perlu memakai
+`http://10.0.2.2:8080`, sedangkan perangkat fisik memakai IP LAN komputer host.
 
 ### 5. Implementasikan dan uji tugas
 
@@ -132,13 +119,14 @@ bagian berikut sebagai kontrak API saat mengimplementasikan login/register.
 
 ## API autentikasi Arah.in
 
-Base URL backend lokal adalah `http://localhost:8080`. Jalankan backend dan
-database terlebih dahulu; panduannya ada di
-[`arahin-backend`](https://github.com/GDGoC-BiOn/arahin-backend#Getting-started).
+Base URL API workshop adalah
+`https://arahin-244244141714.asia-southeast1.run.app/api`. Path endpoint di
+bawah ditambahkan setelah base URL, misalnya login menggunakan
+`https://arahin-244244141714.asia-southeast1.run.app/api/v1/auth/login`.
 Contoh di bawah menggunakan `curl` dan JSON.
 
 ```sh
-API_BASE_URL=http://localhost:8080
+API_BASE_URL=https://arahin-244244141714.asia-southeast1.run.app/api
 ```
 
 ### Register — `POST /v1/auth/register`
