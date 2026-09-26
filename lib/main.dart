@@ -66,6 +66,9 @@ class _AuthWorkshopScreenState extends State<AuthWorkshopScreen> {
   }
 
   void _resetPassword() {
+    // TODO(workshop-forgot-password): implement the reset-password request.
+    // Check the email field without requiring the password field, then show a
+    // confirmation message for a valid email address.
     _showMessage('Tugas lupa password belum dikerjakan.');
   }
 
