@@ -62,6 +62,9 @@ class _AuthWorkshopScreenState extends State<AuthWorkshopScreen> {
   }
 
   void _register() {
+    // TODO(workshop-register): implement the local registration flow.
+    // Use the entered name, email, and password, then show a success message.
+    // Give the participant clear feedback if any registration rule is unmet.
     _showMessage('Tugas registrasi belum dikerjakan.');
   }
 
