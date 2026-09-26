@@ -58,9 +58,9 @@ class _AuthWorkshopScreenState extends State<AuthWorkshopScreen> {
   }
 
   void _login() {
-    // TODO(workshop-login): implement demo email/password authentication.
-    // Accept workshop@example.com with password belajar123, then show a success
-    // message. For other credentials, show a helpful error message.
+    // TODO(workshop-login): call POST /v1/auth/login using the API base URL in
+    // README.md. Send email/password as JSON, handle the response and API errors,
+    // then retain the accessToken for the authenticated session.
     _showMessage('Tugas login belum dikerjakan.');
   }
 
