@@ -42,7 +42,20 @@ Buka `docs/tasks/<nama-tugas>.md`, lalu buka `lib/main.dart` dan cari komentar
 ### 4. Siapkan API backend
 
 Untuk workshop, gunakan backend lokal agar tidak membuat akun latihan di
-production. Clone dan jalankan backend sesuai
+production. Di terminal terpisah, clone dan jalankan backend:
+
+```sh
+# Mulai dari folder arahin-workshop-mini; backend diletakkan sebagai sibling.
+cd ..
+git clone https://github.com/GDGoC-BiOn/arahin-backend.git
+cd arahin-backend
+cp .env.example .env
+make db
+make migrate
+make run
+```
+
+Perintah ini membutuhkan Docker untuk PostgreSQL. Baca juga
 [panduan setup backend](https://github.com/GDGoC-BiOn/arahin-backend#Getting-started).
 Pastikan `GET http://localhost:8080/healthz` berhasil sebelum menguji form.
 
@@ -187,7 +200,9 @@ App Flutter Arah.in memiliki mock lokal untuk route ini dengan request berbentuk
 `{"email":"peserta@example.com"}` dan response mock `{"message":"oke"}`.
 Itu hanya perilaku mock—jangan anggap sebagai dukungan API backend atau gunakan
 response tersebut sebagai kontrak produksi. Untuk branch tugas workshop,
-lakukan demo reset password secara lokal sampai backend menyediakan endpoint.
+implementasikan request tersebut dan tampilkan pesan bahwa fitur belum
+didukung; jangan tampilkan sukses palsu. Gunakan mock/server khusus hanya jika
+fasilitator menyediakannya.
 
 ### Error API
 
