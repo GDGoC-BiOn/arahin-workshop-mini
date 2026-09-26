@@ -58,6 +58,9 @@ class _AuthWorkshopScreenState extends State<AuthWorkshopScreen> {
   }
 
   void _login() {
+    // TODO(workshop-login): implement demo email/password authentication.
+    // Accept workshop@example.com with password belajar123, then show a success
+    // message. For other credentials, show a helpful error message.
     _showMessage('Tugas login belum dikerjakan.');
   }
 
