@@ -6,14 +6,16 @@ void main() {
   testWidgets('shows login form and switches to registration', (tester) async {
     await tester.pumpWidget(const WorkshopApp());
 
-    expect(find.text('Selamat datang!'), findsOneWidget);
+    expect(find.text('Masuk ke akun Arahin\nkamu'), findsOneWidget);
     expect(find.byKey(const Key('email-field')), findsOneWidget);
     expect(find.byKey(const Key('password-field')), findsOneWidget);
 
-    await tester.tap(find.text('Belum punya akun? Daftar'));
+    final switchModeButton = find.text('Belum punya akun? Daftar');
+    await tester.ensureVisible(switchModeButton);
+    await tester.tap(switchModeButton);
     await tester.pumpAndSettle();
 
-    expect(find.text('Buat akun'), findsOneWidget);
+    expect(find.text('Daftar Arahin secara\nSimple'), findsOneWidget);
     expect(find.byKey(const Key('name-field')), findsOneWidget);
   });
 }
