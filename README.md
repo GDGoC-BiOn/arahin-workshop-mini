@@ -87,6 +87,14 @@ flutter pub get
 flutter run
 ```
 
+### Firebase tidak diperlukan
+
+Mini repo ini tidak memakai Firebase dan tidak membutuhkan akun atau project
+Firebase. Tidak perlu memasang FlutterFire CLI, menambahkan
+`google-services.json` / `GoogleService-Info.plist`, atau menginisialisasi
+Firebase. Tombol Google hanya placeholder visual untuk menyamai UI Arahin; tidak
+melakukan autentikasi.
+
 Jalankan pemeriksaan sebelum mengumpulkan tugas:
 
 ```sh
