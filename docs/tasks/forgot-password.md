@@ -2,16 +2,22 @@
 
 Branch: `task/forgot-password`
 
-Lengkapi method `_resetPassword()` di `lib/main.dart`. Tombol lupa password
-sudah tampil di halaman login.
+Lengkapi method `_resetPassword()` di `lib/main.dart` agar tombol mencoba
+menggunakan API. Sebelum mulai, baca bagian **Panduan partisipan** dan **API
+autentikasi Arah.in** di root `README.md`.
 
 ## Acceptance criteria
 
-- Periksa alamat email yang dimasukkan sebelum memproses permintaan.
-- Jangan mewajibkan password untuk menjalankan alur reset.
-- Tampilkan konfirmasi yang jelas jika format email valid.
-- Tampilkan feedback yang mudah dipahami jika email belum valid.
-- Tidak perlu mengirim email sungguhan atau menambahkan backend.
+- Validasi email sebelum mengirim request, tanpa mewajibkan password.
+- Kirim `POST /v1/auth/forgot-password` dengan JSON `{"email":"..."}` ke base
+  URL dari `API_BASE_URL`.
+- Backend Arah.in saat ini belum memiliki route tersebut dan akan menjawab
+  `404`. Tampilkan pesan bahwa fitur belum didukung; jangan tampilkan sukses
+  seolah-olah email reset sudah terkirim.
+- Jika fasilitator menyediakan server/mock yang mengimplementasikan endpoint,
+  tampilkan feedback sukses hanya setelah response sukses.
+- Uji validasi email dan penanganan response `404` tanpa bergantung pada server
+  live.
 - `flutter analyze` dan `flutter test` tetap lulus.
 
 ## Cara mulai

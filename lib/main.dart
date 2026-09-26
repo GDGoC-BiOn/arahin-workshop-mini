@@ -66,9 +66,9 @@ class _AuthWorkshopScreenState extends State<AuthWorkshopScreen> {
   }
 
   void _resetPassword() {
-    // TODO(workshop-forgot-password): implement the reset-password request.
-    // Check the email field without requiring the password field, then show a
-    // confirmation message for a valid email address.
+    // TODO(workshop-forgot-password): call POST /v1/auth/forgot-password with
+    // the email only (do not validate the password). This backend currently
+    // returns 404; show an honest unsupported-feature message, not fake success.
     _showMessage('Tugas lupa password belum dikerjakan.');
   }
 
