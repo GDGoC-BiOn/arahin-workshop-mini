@@ -2,7 +2,83 @@
 
 Starter Flutter app kecil untuk latihan fitur autentikasi. UI form login dan
 registrasi sudah tersedia; tiap branch tugas menyediakan handler yang sengaja
-belum diimplementasikan.
+belum diimplementasikan. Peserta akan menghubungkan form ke API Arah.in.
+
+## Panduan partisipan
+
+Ikuti langkah berikut untuk mengerjakan dan mengumpulkan tugas workshop.
+
+### 1. Clone repo
+
+```sh
+git clone https://github.com/GDGoC-BiOn/arahin-workshop-mini.git
+cd arahin-workshop-mini
+```
+
+Kalau ingin push hasil tugas dan membuat Pull Request, fork repo di GitHub
+terlebih dahulu lalu clone URL fork milikmu. Tanpa akses tulis ke organisasi,
+push langsung ke repo workshop tidak akan diizinkan.
+
+### 2. Baca dokumentasi sebelum coding
+
+README ini adalah panduan utama. Baca bagian
+[API autentikasi Arah.in](#api-autentikasi-arahin) untuk base URL, field request,
+response, dan error API. Perhatikan bahwa endpoint forgot-password belum ada di
+backend.
+
+### 3. Pilih branch tugas
+
+Setiap branch berisi satu tugas yang berdiri sendiri:
+
+```sh
+git switch task/login
+# atau: git switch task/register
+# atau: git switch task/forgot-password
+```
+
+Buka `docs/tasks/<nama-tugas>.md`, lalu buka `lib/main.dart` dan cari komentar
+`TODO(workshop-...)` yang sesuai. Mulai implementasi dari handler tersebut.
+
+### 4. Siapkan API backend
+
+Untuk workshop, gunakan backend lokal agar tidak membuat akun latihan di
+production. Clone dan jalankan backend sesuai
+[panduan setup backend](https://github.com/GDGoC-BiOn/arahin-backend#Getting-started).
+Pastikan `GET http://localhost:8080/healthz` berhasil sebelum menguji form.
+
+Set base URL pada API client yang kamu buat. Gunakan `http://localhost:8080`
+untuk Flutter Web/iOS Simulator; untuk Android Emulator gunakan
+`http://10.0.2.2:8080`. Perangkat fisik harus memakai alamat IP LAN komputer
+yang menjalankan backend. Contoh menjalankan app di Android Emulator:
+
+```sh
+flutter run --dart-define=API_BASE_URL=http://10.0.2.2:8080
+```
+
+Tambahkan dependency HTTP yang kamu pilih (contoh: `flutter pub add http`), lalu
+gunakan `API_BASE_URL` tersebut sebagai base URL client. Kirim JSON dengan
+`Content-Type: application/json`; jangan hardcode token atau mencetaknya ke log.
+
+### 5. Implementasikan dan uji tugas
+
+- Untuk login/register, ikuti route dan contoh request/response pada bagian API
+  di bawah. Tampilkan state loading, hasil berhasil, serta pesan error yang
+  sesuai status API.
+- Untuk forgot-password, jangan tampilkan sukses palsu: route saat ini memang
+  belum tersedia dan backend mengembalikan `404`. Tampilkan pesan bahwa fitur
+  belum didukung, kecuali fasilitator menyediakan mock/server khusus.
+- Sebelum dikumpulkan, jalankan `flutter analyze` dan `flutter test`.
+
+### 6. Commit dan kumpulkan
+
+```sh
+git add .
+git commit -m "workshop: implement <nama-tugas> API"
+git push -u origin <nama-branch>
+```
+
+Jika bekerja dari fork, buka Pull Request dari branch tugas di fork ke branch
+`main` repo workshop.
 
 ## Menjalankan aplikasi
 
@@ -38,9 +114,8 @@ git switch task/login
 Detail acceptance criteria ada di `docs/tasks/` pada branch tugas masing-masing.
 Cari komentar `TODO(workshop-...)` di kode untuk menemukan titik mulai.
 
-Semua autentikasi di workshop ini bersifat demo lokal; tidak ada backend atau
-kredensial sungguhan. Bagian berikut adalah referensi jika tugas dikembangkan
-untuk terhubung ke API Arah.in.
+Branch starter belum terhubung ke API sampai peserta mengerjakan tugas. Gunakan
+bagian berikut sebagai kontrak API saat mengimplementasikan login/register.
 
 ## API autentikasi Arah.in
 
